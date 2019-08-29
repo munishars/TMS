@@ -1,0 +1,13 @@
+<div id="sidebar">
+  <mat-nav-list>
+      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard/view/list-trip-admin']">
+          <mat-icon class="sidenav-icon">dashboard</mat-icon> Summary of Trip Details
+      </a>
+      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard/view/list-trip-employee']">
+          <mat-icon class="sidenav-icon">library_books</mat-icon>Trip Details - Employee
+      </a>
+      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/login']">
+          <mat-icon class="sidenav-icon">exit_to_app</mat-icon> Logout
+      </a>
+  </mat-nav-list>
+</div>

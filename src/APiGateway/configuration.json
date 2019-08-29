@@ -1,0 +1,47 @@
+﻿{
+    "ReRoutes": [
+        {
+            "DownstreamPathTemplate": "/api/Trip",
+            "DownstreamScheme": "http",
+            "DownstreamHost": "localhost",
+            "DownstreamPort": 9001,
+            "UpstreamPathTemplate": "/Trip",
+            "UpstreamHttpMethod": [ "Get" ],
+            "QoSOptions": {
+                "ExceptionsAllowedBeforeBreaking": 3,
+                "DurationOfBreak": 10,
+                "TimeoutValue": 5000
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Trip/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHost": "localhost",
+            "DownstreamPort": 9001,
+            "UpstreamPathTemplate": "/Trip/{id}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "QoSOptions": {
+                "ExceptionsAllowedBeforeBreaking": 3,
+                "DurationOfBreak": 10,
+                "TimeoutValue": 5000
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Vehicle",
+            "DownstreamScheme": "http",
+            "DownstreamPort": 9002,
+            "DownstreamHost": "localhost",
+            "UpstreamPathTemplate": "/Vehicle",
+            "UpstreamHttpMethod": [ "Get" ],
+            "QoSOptions": {
+                "ExceptionsAllowedBeforeBreaking": 3,
+                "DurationOfBreak": 10,
+                "TimeoutValue": 5000
+            }
+        }
+    ],
+    "GlobalConfiguration": {
+        "RequestIdKey": "OcRequestId",
+        "AdministrationPath": "/administration"
+    }
+}

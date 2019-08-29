@@ -1,0 +1,46 @@
+﻿{
+    "ReRoutes": [
+      {
+        "DownstreamPathTemplate": "/api/Trip",
+        "DownstreamScheme": "http",       
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 9001
+          }
+        ],
+        "UpstreamPathTemplate": "/Trip",
+        "UpstreamHttpMethod": [ "Get" ]
+
+      },
+      {
+        "DownstreamPathTemplate": "/api/Trip/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 9001
+          }
+        ],
+        "UpstreamPathTemplate": "/Trip/{id}",
+        "UpstreamHttpMethod": [ "Get" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/vehicle",
+        "DownstreamSchee": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 9002
+          }
+        ],
+        "UpstreamPathTemplate": "/vehicle",
+        "UpstreamHttpMethod": [ "Get" ]
+      }
+    ],
+    "GlobalConfiguration": {
+        "RequestIdKey": "OcRequestId",
+      "AdministrationPath": "/administration"
+        
+    }
+}

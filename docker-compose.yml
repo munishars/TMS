@@ -1,0 +1,85 @@
+version: '3'
+
+services:
+  AngularUI:
+    container_name: angular-app-container
+    build: ./angular-online-travel
+    image: angular-ui-app     
+    volumes:
+    - './angular-online-travel:/usr/src/app'
+    ports:
+      - "4200:4200"
+    depends_on:
+      - AuthAPI
+      - TripManagementAPI
+      - UserManagementAPI
+      - VehicleManagementAPI
+     
+  AuthAPI:
+    container_name: authservice-container
+    build: ./src/Services/Authentication/Authentication.API
+    image: authservice
+    ports:
+      - "8081:80"
+    depends_on:
+      - sqldb
+    environment:
+      SQLSERVER_DB: "Server=sqldb;Database=AuthManagement;User Id=sa;Password=MyPassword001"
+  sqldb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "MyPassword001"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+TripManagementAPI:
+    container_name: tripmanagement-container
+    build: ./src/TripManagement.API
+    image: tripmanagementapi
+    ports:
+      - "8082:80"
+    depends_on:
+      - sqldb
+    environment:
+      SQLSERVER_DB: "Server=sqldb;Database=TripManagement;User Id=sa;Password=MyPassword001"
+  sqldb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "MyPassword001"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+UserManagementAPI:
+    container_name: usermanagement-container
+    build: ./src/src/Services/UserManagement/UserManagement.API
+    image: usermanagementapi
+    ports:
+      - "8083:80"
+    depends_on:
+      - sqldb
+    environment:
+      SQLSERVER_DB: "Server=sqldb;Database=UserManagement;User Id=sa;Password=MyPassword001"
+  sqldb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "MyPassword001"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+VehicleManagementAPI:
+    container_name: vehiclemanagement-container
+    build: ./src/VehicleManagement.API
+    image: vehiclemanagementapi
+    ports:
+      - "8084:80"
+    depends_on:
+      - sqldb
+    environment:
+      SQLSERVER_DB: "Server=sqldb;Database=VehicleManagement;User Id=sa;Password=MyPassword001"
+  sqldb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+        SA_PASSWORD: "MyPassword001"
+        ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"

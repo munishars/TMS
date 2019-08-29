@@ -1,0 +1,7 @@
+<!-- HeaderComponent to be displayed as part of AppComponent -->
+<app-header *ngIf="showHead"></app-header>
+<app-sidenav-menu *ngIf="showHead"></app-sidenav-menu>
+<main class="main-container">
+    <!-- Login/Dashboard component to be rendered based on route -->
+    <router-outlet></router-outlet>
+</main>
